@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prueba_pragma/core/constants/color_constants.dart';
+import 'package:prueba_pragma/core/state/custom_state.dart';
+import 'package:prueba_pragma/features/home/provider/home_provider.dart';
 import 'package:prueba_pragma/features/home/ui/widgets/custom_app_bar.dart';
+import 'package:prueba_pragma/features/home/ui/widgets/list_cats_widget.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -13,11 +15,9 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   ref
-    //       .read(homeProvider.notifier)
-    //       .getInformationUser(userId: Constants.userId);
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(homeProvider.notifier).getCatList();
+    });
     super.initState();
   }
 
@@ -28,51 +28,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final state = ref.watch(homeProvider);
+    final state = ref.watch(homeProvider);
     return Scaffold(
-      appBar: const CustomAppBar(),
-      body: Text('APPPP'),
-    );
-    // body: SingleChildScrollView(
-    //   child: Padding(
-    //     padding: const EdgeInsets.all(20.0),
-    //     child: state.userHealth.whenDataOrFailure(
-    //       failure: (e) => SizedBox(
-    //         child: Text(e),
-    //       ),
-    //       data: (userHealth) => Column(
-    //         crossAxisAlignment: CrossAxisAlignment.start,
-    //         children: [
-    //           const SizedBox(height: 30),
-    //           Text.rich(
-    //             TextSpan(
-    //               children: [
-    //                 const TextSpan(
-    //                     text: 'Hi, ',
-    //                     style: TextStyle(
-    //                       fontSize: 24,
-    //                     )),
-    //                 TextSpan(
-    //                   text: userHealth.name,
-    //                   style: const TextStyle(
-    //                     fontWeight: FontWeight.bold,
-    //                     fontSize: 24,
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //           const Text(
-    //             'Your goal is on its way to you!',
-    //             style: TextStyle(fontSize: 14),
-    //           ),
-    //           const SizedBox(height: 30),
-    //           const SizedBox(height: 10),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // ));
+        appBar: const CustomAppBar(),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: state.cats.whenDataOrFailure(
+              failure: (e) => SizedBox(
+                    child: Text(e),
+                  ),
+              data: (cats) => Column(
+                    children: [
+                      const SizedBox(height: 30),
+                      Container(
+                        height: 30,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(height: 30),
+                      ListCatsWidget(cats: cats)
+                    ],
+                  )
+              //   ],
+              // ),
+              ),
+        ));
   }
 
   void onPressed({

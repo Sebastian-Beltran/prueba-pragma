@@ -13,8 +13,8 @@ class CatModel extends Equatable {
   final String id;
   final String name;
   final String countryOrigin;
-  final int inteligence;
-  final int adaptability;
+  final int? inteligence;
+  final int? adaptability;
   final String lifeSpan;
   final String? imgPath;
 
@@ -23,8 +23,8 @@ class CatModel extends Equatable {
       id: json['id'] as String,
       name: json['name'] as String,
       countryOrigin: json['origin'] as String,
-      inteligence: json['inteligence'] as int,
-      adaptability: json['inteligence'] as int,
+      inteligence: json['intelligence'] as int,
+      adaptability: json['adaptability'] as int,
       lifeSpan: json['life_span'] as String,
     );
   }

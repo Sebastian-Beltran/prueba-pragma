@@ -21,6 +21,7 @@ class RequestHandlerImpl extends RequestHandler {
         _apiURL(path),
         headers: headers,
       );
+      print(res.body);
       return res;
     } catch (e) {
       print('ERROR GET');
