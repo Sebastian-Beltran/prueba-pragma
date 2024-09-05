@@ -16,16 +16,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
           const Text(
             'Catbreeds',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w800,
-              fontSize: 22,
+              fontSize: 30,
             ),
           ),
           ClipRRect(

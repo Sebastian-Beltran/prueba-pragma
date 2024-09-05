@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prueba_pragma/features/home/ui/detail_screen.dart';
 import 'package:prueba_pragma/features/home/ui/home_screen.dart';
 
 Future<void> main() async {
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/home': (context) => const HomeScreen(),
-        // '/detail': (context) => DetailsScreen(),
+        '/detail': (context) => const DetailsScreen(),
       },
     );
   }

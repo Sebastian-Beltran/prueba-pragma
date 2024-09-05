@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_pragma/core/state/custom_state.dart';
@@ -26,12 +27,9 @@ class HomeNotifier extends StateNotifier<HomeState> {
   void resetState() => state = HomeState.initial();
 
   Future<void> getCatList() async {
-    state = state.copyWith(cats: const CustomState.loading());
     final res = await homeService.getCatList();
     res.fold(
-      (left) => state = state.copyWith(
-        cats: CustomState.failure(left),
-      ),
+      (left) => Text(left),
       (right) => state = state.copyWith(
         cats: CustomState.data(right),
       ),
@@ -39,13 +37,31 @@ class HomeNotifier extends StateNotifier<HomeState> {
   }
 
   Future<void> getImageCat(String catId) async {
-    state = state.copyWith(catImage: const CustomState.loading());
+    final existingImageState = state.catImages[catId];
+    if (existingImageState != null) {
+      return;
+    }
+    state = state.copyWith(
+      catImages: {
+        ...state.catImages,
+        catId: const CustomState.loading(),
+      },
+    );
+
     final res = await homeService.getImage(catId);
 
     res.fold(
-      (left) => Text(left),
+      (left) => state = state.copyWith(
+        catImages: {
+          ...state.catImages,
+          catId: CustomState.failure(left),
+        },
+      ),
       (right) => state = state.copyWith(
-        catImage: CustomState.data(right),
+        catImages: {
+          ...state.catImages,
+          catId: CustomState.data(right),
+        },
       ),
     );
   }

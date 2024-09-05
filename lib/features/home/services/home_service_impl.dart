@@ -8,7 +8,8 @@ import 'package:prueba_pragma/features/home/models/img_model.dart';
 
 import 'package:prueba_pragma/features/home/services/home_service.dart';
 
-final homeServiceProvider = Provider<HomeService>(HomeServiceImpl.fromRef);
+final homeServiceProvider =
+    Provider.autoDispose<HomeService>(HomeServiceImpl.fromRef);
 
 class HomeServiceImpl implements HomeService {
   HomeServiceImpl({
