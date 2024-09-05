@@ -18,7 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Installation
 
-Use the Flutter Doc.
+Clone de repo and run the next command in terminal:
 
 ```bash
 flutter pub get
