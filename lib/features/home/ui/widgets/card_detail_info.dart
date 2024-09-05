@@ -16,12 +16,10 @@ class CardDetailInfo extends StatelessWidget {
       width: double.infinity,
       height: size * 0.5,
       decoration: const BoxDecoration(
-        color: Colors.white, // Cambia el color según tus necesidades
+        color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(
-              20.0), // Ajusta el radio del borde superior izquierdo
-          topRight: Radius.circular(
-              20.0), // Ajusta el radio del borde superior derecho
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
         ),
       ),
       child: Padding(
@@ -39,16 +37,20 @@ class CardDetailInfo extends StatelessWidget {
                     fontSize: 30,
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.pets,
                   size: 30,
+                  color: ColorConstants.primary,
                 ),
               ],
             ),
             const SizedBox(height: 30),
             Row(
               children: [
-                const Icon(Icons.location_pin),
+                Icon(
+                  Icons.location_pin,
+                  color: ColorConstants.primary,
+                ),
                 Text(
                   'Origin Country: ${cat.countryOrigin}',
                   style: TextStyle(
@@ -173,6 +175,10 @@ class CardDetailInfo extends StatelessWidget {
             const SizedBox(height: 20),
             if (cat.urlInfo != null)
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorConstants.primary,
+                  foregroundColor: Colors.white,
+                ),
                 onPressed: () => launchUrl(Uri.parse(cat.urlInfo!)),
                 child: const Text('Ver mas información'),
               )

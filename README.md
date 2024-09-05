@@ -14,3 +14,22 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Description Pragma Test
+
+This project is about test for Pragma.
+
+## Installation
+
+Use the Flutter Doc.
+
+```bash
+flutter pub get
+```
+## Run Test
+
+For the run test use the next command:
+
+```bash
+flutter run test
+```

@@ -14,7 +14,7 @@ class ProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     double progress = currentStep / totalSteps;
 
-    return Container(
+    return SizedBox(
       width: 100,
       height: 10,
       child: Stack(

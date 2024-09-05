@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App salud',
+      title: 'Catbreeds',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF213544),
+            backgroundColor: Color(0xFF483285),
             iconTheme: IconThemeData(
               color: Colors.white,
             )),
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        scaffoldBackgroundColor: const Color(0xFF213544),
+        scaffoldBackgroundColor: const Color(0xFF483285),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),

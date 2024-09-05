@@ -52,9 +52,10 @@ class _CardCatWidgetState extends ConsumerState<CardCatWidget> {
         );
       },
       child: Card(
+        color: ColorConstants.secondary,
         margin: const EdgeInsets.all(10),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Row(
@@ -68,10 +69,7 @@ class _CardCatWidgetState extends ConsumerState<CardCatWidget> {
                       fontSize: 22,
                     ),
                   ),
-                  Text(
-                    'Más...',
-                    style: TextStyle(color: ColorConstants.primary),
-                  )
+                  const Icon(Icons.arrow_forward_ios),
                 ],
               ),
               const SizedBox(height: 10),
@@ -82,7 +80,10 @@ class _CardCatWidgetState extends ConsumerState<CardCatWidget> {
               else if (state.catImages[cat.id]?.isSuccess != null)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.network(state.catImages[cat.id]!.value!.url),
+                  child: Image.network(
+                      width: 300,
+                      fit: BoxFit.fill,
+                      state.catImages[cat.id]!.value!.url),
                 )
               else
                 const Placeholder(),
